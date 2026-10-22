@@ -922,7 +922,7 @@ form.addEventListener('submit', async e=>{
 
   submitBtn.disabled = true;
   try{
-    await deliver({name, contact, package:pkg, message:msg, lang:LANG, ts:new Date().toISOString()});
+   await deliver(Object.assign({name, contact, package:pkg, message:msg, lang:LANG, ts:new Date().toISOString()}, getUtm()));
     const now=Date.now(); saveTimes(getTimes().filter(x=>now-x<3600000).concat(now));
     form.reset(); startedAt=0; newCaptcha(); setStatus('ok','ok');
   }catch(err){
