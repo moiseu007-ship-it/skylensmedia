@@ -1006,11 +1006,6 @@ $$('[data-pkg]').forEach(b=>b.addEventListener('click',()=>{
       VIDEO (YouTube): {type:'video', src:'https://youtu.be/XXXXXXXXXXX', title:'Real estate'},
       VIDEO (Vimeo):   {type:'video', src:'https://vimeo.com/123456789', title:'Event'},
    title can be a string or {ua:'..', en:'..', cz:'..'}. Newest first = put at the top. */
-const PORTFOLIO = [{type:'video', src:'https://www.instagram.com/p/DdejBmJN0ii/', poster:'portfolio/cover-1.jpg', title:'Reel з Instagram'},
-  // {type:'photo', src:'portfolio/photo-1.jpg', title:{ua:'Приватний будинок', en:'Private house', cz:'Rodinný dům'}},
-  // {type:'video', src:'portfolio/video-1.mp4', poster:'portfolio/video-1.jpg', title:'Reel'},
-  // {type:'video', src:'https://youtu.be/XXXXXXXXXXX', title:'YouTube'},
-];
 (function(){
   const grid=$('#pf-grid'), emptyEl=$('#pf-empty'), lb=$('#lb'), media=$('#lb-media'), cap=$('#lb-cap');
   let filter='all', shown=[], cur=0;
