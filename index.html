@@ -874,6 +874,18 @@ form.addEventListener('focusin',()=>{ if(!startedAt) startedAt = Date.now(); });
   el.addEventListener('input',()=>{ if(errState[f]) setErr(f,null); });
 });
 
+  /* UTM tags: remembered for the current visit only, sent with the form */
+const UTM_KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
+let utmMem = {};
+(function(){
+  try{
+    const q = new URLSearchParams(location.search), o = {};
+    UTM_KEYS.forEach(k=>{ const v = q.get(k); if(v) o[k] = v.slice(0,100); });
+    if(Object.keys(o).length){ utmMem = o; try{ sessionStorage.setItem('skylens_utm', JSON.stringify(o)); }catch(e){} }
+    else { try{ const raw = sessionStorage.getItem('skylens_utm'); if(raw) utmMem = JSON.parse(raw) || {}; }catch(e){} }
+  }catch(e){}
+})();
+const getUtm = () => Object.assign({}, utmMem, {referrer:(document.referrer||'').slice(0,200)});
 function deliver(payload){
   if(!ENDPOINT) return Promise.resolve();
   return fetch(ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)});
