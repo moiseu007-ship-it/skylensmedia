@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>SkyLens Media</title>
+<meta name="description" content="SkyLens Media: professional 4K HDR drone filming for real estate, events, construction and social media. CZ / EN / UA.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="SkyLens Media | Professional 4K HDR Aerial Filming">
+<meta property="og:description" content="Real estate, promo videos, events, construction and Reels/TikTok content from above.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%9A%81%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');</script>
+<style>
+  :root{
+    --bg:#0A0A0A; --surface:#111111; --surface2:#181818; --blue:#1A1A1A;
+    --line:rgba(255,255,255,.16); --text:#F5F5F5; --muted:#A6A6A6;
+    --accent:#FF5A00; --accent-ink:#0A0A0A; --sky:#FFFFFF; --bad:#FF6B6B;
+    --font-display:'Oswald','Arial Narrow',Impact,sans-serif;
+    --font-body:'Manrope',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+    color-scheme:dark;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  html{overflow-x:hidden; overflow-x:clip; max-width:100%; scroll-behavior:smooth; scroll-padding-top:calc(84px + env(safe-area-inset-top,0px)); background:var(--bg);}
+  *,*::before,*::after{box-sizing:border-box;}
+  body{margin:0; background:var(--bg); color:var(--text); font-family:var(--font-body); font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden; overflow-x:clip; max-width:100%;}
+  h1,h2,h3{font-family:var(--font-display); font-weight:700; line-height:1.12; margin:0; letter-spacing:-.01em;}
+  p{margin:0;}
+  a{color:inherit; text-decoration:none;}
+  :focus-visible{outline:2px solid var(--sky); outline-offset:3px; border-radius:6px;}
+  .wrap{max-width:1160px; margin-inline:auto; padding-inline:20px;}
+  .section{padding-block:96px;}
+  .section-head{max-width:640px; margin-bottom:44px;}
+  .section-head h2{font-size:clamp(1.55rem,3.2vw,2.3rem);}
+  .section-head p{color:var(--muted); margin-top:14px; max-width:60ch;}
+  svg.i{width:1.25rem; height:1.25rem; flex:none; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round;}
+
+  /* header */
+  .site-header{position:sticky; top:env(safe-area-inset-top,0px); z-index:50; background:rgba(10,10,10,.78); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-bottom:1px solid var(--line);}
+  .site-header .bar{min-height:64px; padding-block:8px; display:flex; align-items:center; justify-content:space-between; gap:10px;}
+  .site-header .bar > *{min-width:0;}
+  .bar-right{display:flex; align-items:center; gap:10px; flex:none;}
+  .logo{display:flex; align-items:center; gap:10px; font-family:var(--font-display); font-weight:700; font-size:1rem; white-space:nowrap; flex:none;}
+  .head-cta, .panel-cta{white-space:nowrap;}
+  @media (max-width:420px){ .logo{font-size:.88rem; gap:8px;} .lang button{padding:6px 8px; font-size:.74rem;} .bar-right{gap:8px;} .wrap{padding-inline:16px;} .nav{padding-inline:16px;} .form-card{padding:24px 18px;} }
+  .logo-dot{width:10px; height:10px; border-radius:50%; background:var(--accent); box-shadow:0 0 14px var(--accent);}
+  .nav{display:none; position:absolute; left:0; right:0; top:100%; flex-direction:column; gap:2px; padding:12px 20px 20px; background:var(--surface); border-bottom:1px solid var(--line);}
+  .nav.open{display:flex;}
+  .nav a{padding:12px 6px; color:var(--muted); font-weight:600; font-size:.95rem; transition:color .2s;}
+  .nav a:hover{color:var(--text);}
+  .nav .panel-cta{display:inline-flex; margin-top:10px; justify-content:center; color:var(--accent-ink);}
+  .nav .panel-cta:hover{color:var(--accent-ink);}
+  .head-cta{display:none;}
+  .menu-btn{display:inline-flex; align-items:center; justify-content:center; width:42px; height:42px; border-radius:12px; border:1px solid var(--line); background:var(--surface2); color:var(--text); cursor:pointer;}
+  .lang{display:inline-flex; padding:3px; border:1px solid var(--line); border-radius:999px; background:var(--surface);}
+  .lang button{border:0; background:none; color:var(--muted); font:600 .78rem var(--font-body); padding:6px 11px; border-radius:999px; cursor:pointer; transition:background .2s,color .2s;}
+  .lang button[aria-pressed="true"]{background:var(--accent); color:var(--accent-ink);}
+  @media (min-width:900px){ .head-cta{display:inline-flex;} .nav .panel-cta{display:none;} }
+  @media (min-width:1100px){
+    .nav{display:flex; position:static; flex-direction:row; gap:26px; padding:0; background:none; border:0;}
+    .nav a{padding:6px 0; font-size:.9rem;}
+    .menu-btn{display:none;}
+  }
+
+  /* buttons */
+  .btn{display:inline-flex; align-items:center; gap:8px; padding:12px 22px; border-radius:999px; font:700 .92rem var(--font-body); border:1px solid transparent; cursor:pointer; transition:transform .2s, box-shadow .2s, background .2s, border-color .2s;}
+  .btn-primary{background:var(--accent); color:var(--accent-ink);}
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 10px 30px -8px rgba(255,90,0,.7);}
+  .btn-ghost{border-color:var(--line); background:rgba(24,24,24,.6); color:var(--text);}
+  .btn-ghost:hover{border-color:var(--sky); box-shadow:0 0 0 1px rgba(255,255,255,.35), 0 10px 30px -12px rgba(255,255,255,.6);}
+  .justify-center{justify-content:center;}
+  .btn[disabled]{opacity:.6; cursor:not-allowed; transform:none;}
+
+  /* cards */
+  .card{position:relative; border:1px solid var(--line); border-radius:16px; background:linear-gradient(180deg,var(--surface2),var(--surface)); transition:transform .3s, border-color .3s, box-shadow .3s;}
+  .card:hover{transform:translateY(-4px); border-color:rgba(255,90,0,.55); box-shadow:0 0 0 1px rgba(255,90,0,.25), 0 18px 44px -18px rgba(255,90,0,.45);}
+  .ico{display:grid; place-items:center; width:44px; height:44px; border-radius:12px; background:rgba(255,255,255,.12); color:var(--sky); border:1px solid rgba(255,255,255,.25);}
+  .ico svg{width:1.3rem; height:1.3rem;}
+
+  /* hero */
+  .hero{position:relative; padding-block:72px 88px; background:
+      radial-gradient(900px 520px at 85% 0%, rgba(255,90,0,.85), transparent 70%),
+      radial-gradient(600px 400px at 0% 100%, rgba(255,90,0,.45), transparent 70%), var(--bg);}
+  .hero-grid{display:grid; gap:48px; align-items:center;}
+  .hero-grid > *, .price-grid > *, .adv-grid > *, .srv-grid > *{min-width:0;}
+  @media (min-width:960px){ .hero-grid{grid-template-columns:1.05fr .95fr;} }
+  .hero-title{font-size:clamp(1.6rem,6.4vw,3.3rem); overflow-wrap:break-word; hyphens:auto;}
+  .hero-sub{overflow-wrap:break-word;}
+  .hero-title span{display:block;}
+  .hero-title .hero-title-2{margin-top:10px; font-size:.62em; color:var(--accent); letter-spacing:0;}
+  .hero-sub{margin-top:22px; max-width:52ch; color:var(--muted); font-size:1.08rem;}
+  .hero-actions{display:flex; flex-wrap:wrap; gap:12px; margin-top:32px;}
+
+  .hud{position:relative; border-radius:24px; border:1px solid var(--line); overflow:hidden; aspect-ratio:4/3.3; background:#0a0a0a;}
+  .hud .ground{position:absolute; inset:0; width:100%; height:100%;}
+  .hud .pan{animation:pan 10s linear infinite;}
+  .hud::after{content:""; position:absolute; inset:0; pointer-events:none; background:radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,.8) 100%), linear-gradient(180deg, rgba(255,90,0,.18), rgba(0,0,0,.35));}
+  .hud .corner{position:absolute; z-index:3; width:22px; height:22px; border:2px solid var(--accent); opacity:.9;}
+  .hud .c1{top:14px; left:14px; border-right:0; border-bottom:0;}
+  .hud .c2{top:14px; right:14px; border-left:0; border-bottom:0;}
+  .hud .c3{bottom:14px; left:14px; border-right:0; border-top:0;}
+  .hud .c4{bottom:14px; right:14px; border-left:0; border-top:0;}
+  .hud-top, .hud-bot{position:absolute; z-index:3; left:42px; right:42px; display:flex; justify-content:space-between; font:600 .78rem var(--font-body); letter-spacing:.04em; color:#f0f0f0;}
+  .hud-top{top:20px;} .hud-bot{bottom:46px;}
+  .rec{display:inline-flex; align-items:center; gap:8px;}
+  .rec i{width:9px; height:9px; border-radius:50%; background:#ff3b3b; animation:blink 1.4s steps(2,start) infinite;}
+
+  .stage{position:absolute; z-index:2; inset:2% 4% 14% 4%; perspective:900px; animation:arrive 1.4s cubic-bezier(.2,.8,.2,1) both;}
+  .stage svg{position:absolute; inset:0; width:100%; height:100%; overflow:visible;}
+  .stage .shadow{animation:shadowpulse 6s ease-in-out infinite;}
+  .stage .tilt{position:absolute; inset:0; transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)); transition:transform .25s ease-out; transform-style:preserve-3d;}
+  .stage .fly{animation:hover 6s ease-in-out infinite;}
+  .prop{transform-box:fill-box; transform-origin:center; animation:spin .3s linear infinite;}
+  .prop.rev{animation-direction:reverse;}
+  .gimbal{transform-box:fill-box; transform-origin:50% 80%; animation:sway 5s ease-in-out infinite;}
+  .led{animation:blink 1.2s steps(2,start) infinite;}
+  @keyframes pan{from{transform:translateY(-120px);}to{transform:translateY(0);}}
+  @keyframes arrive{from{opacity:0; transform:translateY(-26px) scale(1.18);}to{opacity:1; transform:none;}}
+  @keyframes hover{0%,100%{transform:translate(-7px,5px) rotateZ(-1.8deg);}50%{transform:translate(9px,-9px) rotateZ(1.8deg);}}
+  @keyframes shadowpulse{0%,100%{transform:translate(6%,9%) scale(1); opacity:.85;}50%{transform:translate(8%,12%) scale(1.07); opacity:.6;}}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  @keyframes sway{0%,100%{transform:rotate(-4deg);}50%{transform:rotate(4deg);}}
+  @keyframes blink{50%{opacity:.2;}}
+  @keyframes rise{from{opacity:0; transform:translateY(16px);}to{opacity:1; transform:none;}}
+
+  .spec-card{position:relative; z-index:4; margin:-34px 16px 0; padding:14px; border-radius:18px; border:1px solid var(--line); background:rgba(255,255,255,.92); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); display:grid; grid-template-columns:1fr 1fr; gap:10px;}
+  .spec{display:flex; gap:10px; align-items:flex-start; padding:10px; border-radius:12px; background:rgba(24,24,24,.7); border:1px solid transparent; opacity:0; animation:rise .6s ease-out forwards; transition:border-color .25s, background .25s;}
+  .spec:nth-child(1){animation-delay:.35s;} .spec:nth-child(2){animation-delay:.5s;} .spec:nth-child(3){animation-delay:.65s;} .spec:nth-child(4){animation-delay:.8s;}
+  .spec:hover{border-color:rgba(255,90,0,.5); background:rgba(255,90,0,.07);}
+  .spec b{display:block; font-family:var(--font-display); font-size:.8rem; line-height:1.3;}
+  .spec span.d{display:block; margin-top:3px; font-size:.78rem; color:var(--muted); line-height:1.4;}
+  .spec svg{color:var(--accent); margin-top:2px;}
+  @media (max-width:420px){ .spec-card{grid-template-columns:1fr;} }
+
+  /* reveal */
+  .js .reveal{opacity:0; transform:translateY(20px); transition:opacity .7s ease, transform .7s ease; transition-delay:var(--d,0s);}
+  .js .reveal.in{opacity:1; transform:none;}
+  .js .reveal.card.in:hover{transform:translateY(-4px);}
+
+  /* advantages & services */
+  .adv-grid, .srv-grid{display:grid; gap:18px; grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));}
+  .adv-grid .card, .srv-grid .card{padding:26px;}
+  .adv-grid h3, .srv-grid h3{font-size:1rem; margin:18px 0 10px;}
+  .adv-grid p, .srv-grid p{color:var(--muted); font-size:.93rem;}
+
+  /* pricing */
+  .price-grid{display:grid; gap:20px; align-items:stretch; grid-template-columns:1fr;}
+  @media (min-width:900px){ .price-grid{grid-template-columns:repeat(3,1fr);} }
+  .plan{padding:30px 26px; display:flex; flex-direction:column;}
+  .plan h3{font-size:1.1rem;}
+  .plan .ptag{color:var(--muted); font-size:.88rem; margin-top:6px;}
+  .plan .price{margin:22px 0 4px; font-family:var(--font-display); font-size:1.9rem; font-weight:700;}
+  .plan .price small{font:600 .82rem var(--font-body); color:var(--muted); margin-right:6px;}
+  .plan ul{list-style:none; margin:22px 0 28px; padding:0; display:grid; gap:12px; flex:1;}
+  .plan li{display:flex; gap:10px; font-size:.92rem; color:#d6d6d6;}
+  .plan li svg{color:var(--accent); margin-top:3px; width:1.05rem; height:1.05rem;}
+  .plan.popular{border-color:rgba(255,90,0,.7); background:linear-gradient(180deg,rgba(255,90,0,.12),var(--surface2) 38%,var(--surface)); box-shadow:0 0 0 1px rgba(255,90,0,.3), 0 24px 60px -24px rgba(255,90,0,.55);}
+  @media (min-width:900px){ .plan.popular{transform:translateY(-12px);} .js .reveal.plan.popular.in{transform:translateY(-12px);} .js .reveal.plan.popular.in:hover{transform:translateY(-16px);} }
+  .badge{position:absolute; top:-13px; left:26px; padding:4px 14px; border-radius:999px; background:var(--accent); color:var(--accent-ink); font:700 .78rem var(--font-body);}
+  .price-note{margin-top:28px; color:var(--muted); font-size:.88rem;}
+
+  /* form */
+  .form-card{padding:32px 28px; border-radius:22px; border:1px solid var(--line); background:linear-gradient(180deg,var(--surface2),var(--surface)); max-width:760px;}
+  .field{display:grid; gap:6px; margin-bottom:18px;}
+  .field label{font-weight:600; font-size:.88rem;}
+  .field input, .field select, .field textarea{width:100%; padding:13px 14px; border-radius:12px; border:1px solid var(--line); background:#0d0d0d; color:var(--text); font:500 .95rem var(--font-body); transition:border-color .2s, box-shadow .2s;}
+  .field textarea{min-height:130px; resize:vertical;}
+  .field input:focus, .field select:focus, .field textarea:focus{outline:none; border-color:var(--sky); box-shadow:0 0 0 3px rgba(255,255,255,.25);}
+  .field[data-invalid="true"] input, .field[data-invalid="true"] select, .field[data-invalid="true"] textarea{border-color:var(--bad);}
+  .err{min-height:1.1em; color:var(--bad); font-size:.82rem;}
+  .two{display:grid; gap:0 18px; grid-template-columns:1fr;}
+  @media (min-width:680px){ .two{grid-template-columns:1fr 1fr;} }
+  .hp{position:absolute !important; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;}
+  .captcha{display:flex; align-items:center; gap:14px; padding:14px; border:1px dashed rgba(255,255,255,.4); border-radius:14px; background:rgba(255,90,0,.25); margin-bottom:18px; flex-wrap:wrap;}
+  .captcha .q{font-weight:700;}
+  .captcha input{width:90px; padding:10px 12px; border-radius:10px; border:1px solid var(--line); background:#0d0d0d; color:var(--text); font:600 1rem var(--font-body); text-align:center;}
+  .captcha .hint{margin-left:auto; font-size:.78rem; color:var(--muted);}
+  .status{margin-top:16px; min-height:1.4em; font-weight:600; font-size:.92rem;}
+  .status.ok{color:#5BE3A1;} .status.bad{color:var(--bad);}
+
+  footer{border-top:1px solid var(--line); padding-block:36px; color:var(--muted); font-size:.85rem;}
+  footer .wrap{display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px;}
+
+
+  /* ===== Breaking-2 style: black / white / orange ===== */
+  h1,h2,h3,.logo,.btn,.spec b,.stat b,.plan .price{font-family:var(--font-display); text-transform:uppercase; letter-spacing:.02em;}
+  .logo-dot{width:14px; height:14px; border-radius:0; transform:skewX(-18deg); box-shadow:none;}
+  .logo{font-size:1.15rem;}
+  .nav a{text-transform:uppercase; letter-spacing:.08em; font-size:.82rem; font-weight:700; font-family:var(--font-display);}
+  .nav a:hover{color:var(--accent);}
+  .lang, .lang button, .seg{border-radius:0;}
+  .btn{border-radius:0; font-weight:600; letter-spacing:.08em; padding:14px 26px; transform:skewX(-8deg);}
+  .btn > *{display:inline-block; transform:skewX(8deg);}
+  .btn-primary:hover{box-shadow:6px 6px 0 #fff;}
+  .btn-ghost{background:transparent; border:2px solid #fff;}
+  .btn-ghost:hover{background:#fff; color:#0a0a0a; border-color:#fff; box-shadow:none;}
+  .card, .hud, .spec-card, .spec, .form-card, .plan, .ico, .field input, .field select, .field textarea, .captcha, .captcha input{border-radius:0;}
+  .card{background:#121212; border-color:rgba(255,255,255,.14);}
+  .card:hover{border-color:var(--accent); box-shadow:8px 8px 0 var(--accent); transform:translate(-4px,-4px);}
+  .js .reveal.card.in:hover{transform:translate(-4px,-4px);}
+  .ico{background:var(--accent); color:#0a0a0a; border:0; transform:skewX(-8deg);}
+  .hero{background:repeating-linear-gradient(115deg, transparent 0 54px, rgba(255,90,0,.10) 54px 58px), radial-gradient(700px 420px at 90% 0%, rgba(255,90,0,.22), transparent 70%), #0a0a0a;}
+  .hero-title{font-size:clamp(2.7rem,9.5vw,6.4rem); line-height:.92; letter-spacing:-.005em; font-weight:700;}
+  .hero-title .hero-title-2{font-size:.46em; color:var(--accent); margin-top:16px; line-height:1;}
+  .hero-sub{color:#cfcfcf; border-left:6px solid var(--accent); padding-left:16px;}
+  .hud{border:2px solid #fff;}
+  .section-head h2{font-size:clamp(2.1rem,5.4vw,3.8rem); line-height:.98;}
+  .section-head h2::after{content:""; display:block; width:84px; height:8px; background:var(--accent); margin-top:16px; transform:skewX(-18deg);}
+  .spec-card{background:#0a0a0a; border:2px solid #fff;}
+  .spec{background:#151515;}
+  .plan{border:2px solid #fff; background:#0f0f0f;}
+  .plan.popular{border-color:var(--accent); background:#161616; box-shadow:10px 10px 0 var(--accent);}
+  .badge{border-radius:0; background:var(--accent); color:#0a0a0a; font-family:var(--font-display); text-transform:uppercase; letter-spacing:.06em;}
+  .plan .price{font-size:2.4rem;}
+  .form-card{border:2px solid #fff; background:#0f0f0f;}
+  .filters button{border-radius:0;}
+  .ticker{overflow:hidden; background:var(--accent); color:#0a0a0a; border-block:3px solid #fff;}
+  .ticker-track{display:flex; width:max-content; animation:tick 30s linear infinite;}
+  .ticker span{font-family:var(--font-display); font-weight:700; text-transform:uppercase; font-size:1.2rem; letter-spacing:.06em; padding:10px 0 10px 30px; white-space:nowrap;}
+  .ticker span::after{content:"/"; margin-left:30px; opacity:.55;}
+  @keyframes tick{to{transform:translateX(-50%);}}
+  .shots-grid{display:grid; gap:18px; grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));}
+  .shot{padding:0 0 22px; overflow:hidden;}
+  .shot-viz{aspect-ratio:5/3; background:#0d0d0d; border-bottom:2px solid #fff; background-image:repeating-linear-gradient(115deg, transparent 0 20px, rgba(255,255,255,.04) 20px 22px);}
+  .shot-viz svg{width:100%; height:100%; display:block;}
+  .shot h3{font-size:1.25rem; margin:18px 22px 6px;}
+  .shot p{margin:0 22px; color:var(--muted); font-size:.92rem;}
+  .travel{display:grid; gap:32px; align-items:center; padding:40px 32px; background:#0f0f0f; border:2px solid #fff;}
+  @media (min-width:900px){ .travel{padding:56px;} }
+  .travel h2{font-size:clamp(2rem,4.6vw,3.2rem); line-height:1;}
+  .tr-sub{color:var(--muted); margin-top:14px; max-width:46ch;}
+  .rate{display:flex; align-items:baseline; gap:12px; margin-top:22px;}
+  .rate b{font-family:var(--font-display); font-size:clamp(5rem,16vw,9rem); line-height:.85; color:var(--accent);}
+  .rate span{font-family:var(--font-display); text-transform:uppercase; font-size:1.5rem;}
+  .calc{display:grid; gap:12px;}
+  .calc label{font-weight:700; font-size:.9rem;}
+  .calc input{width:100%; padding:14px; background:#0d0d0d; color:#fff; border:2px solid #fff; border-radius:0; font:700 1.6rem var(--font-display);}
+  .calc input:focus{outline:none; border-color:var(--accent);}
+
+  .stepper{display:grid; grid-template-columns:56px 1fr 56px; border:2px solid #fff;}
+  .stepper button{background:transparent; color:#fff; border:0; font:700 1.8rem var(--font-display); cursor:pointer; transition:background .2s,color .2s;}
+  .stepper button:hover{background:var(--accent); color:#0a0a0a;}
+  .stepper-val{display:flex; align-items:baseline; justify-content:center; gap:8px; padding:10px; border-inline:2px solid #fff;}
+  .calc .stepper-val input{width:3.2ch; padding:0; border:0; background:transparent; text-align:right; font:700 2.4rem var(--font-display); color:#fff;}
+  .stepper-val span{font:600 1rem var(--font-display); text-transform:uppercase; color:var(--muted);}
+  .range{-webkit-appearance:none; appearance:none; width:100%; height:28px; background:transparent; cursor:pointer; --pct:10%;}
+  .range::-webkit-slider-runnable-track{height:6px; background:linear-gradient(90deg,var(--accent) var(--pct),rgba(255,255,255,.22) var(--pct));}
+  .range::-moz-range-track{height:6px; background:rgba(255,255,255,.22);}
+  .range::-moz-range-progress{height:6px; background:var(--accent);}
+  .range::-webkit-slider-thumb{-webkit-appearance:none; width:16px; height:28px; margin-top:-11px; background:#fff; border:3px solid #0a0a0a; outline:2px solid #fff; transform:skewX(-12deg);}
+  .range::-moz-range-thumb{width:12px; height:24px; background:#fff; border:3px solid #0a0a0a; border-radius:0;}
+  .range-scale{display:flex; justify-content:space-between; margin-top:-6px; font:600 .75rem var(--font-display); color:var(--muted);}
+  .chips{display:flex; gap:8px; flex-wrap:wrap;}
+  .chips button{padding:8px 16px; background:transparent; color:#fff; border:2px solid rgba(255,255,255,.4); font:700 .9rem var(--font-display); cursor:pointer;}
+  .chips button:hover{border-color:var(--accent); color:var(--accent);}
+  .calc-out{margin-top:6px; padding:18px 20px; background:var(--accent); color:#0a0a0a;}
+  .calc-out span{display:block; font-weight:700; font-size:.85rem; text-transform:uppercase; letter-spacing:.06em;}
+  .calc-out b{display:block; font-family:var(--font-display); font-size:2.8rem; line-height:1.1;}
+  .calc-out small{display:block; font-weight:600; opacity:.8;}
+
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    *,*::before,*::after{animation-duration:.001s !important; animation-iteration-count:1 !important; transition-duration:.001s !important;}
+    .js .reveal{opacity:1; transform:none;}
+    .spec{opacity:1;}
+  }
+</style>
+</head>
+<body>
+
+<!-- shared SVG filters -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+    <filter id="blur3" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="3"/></filter>
+    <filter id="blur8" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="8"/></filter>
+    <filter id="blur14" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="14"/></filter>
+  </defs>
+</svg>
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a href="#hero" class="logo" aria-label="SkyLens Media"><span class="logo-dot"></span>SkyLens Media</a>
+    <nav id="nav" class="nav" aria-label="Main">
+      <a href="#advantages" data-i18n="nav.adv"></a>
+      <a href="#shots" data-i18n="nav.shots"></a>
+      <a href="#services" data-i18n="nav.services"></a>
+      <a href="#packages" data-i18n="nav.packages"></a>
+      <a href="#travel" data-i18n="nav.travel"></a>
+      <a href="#contact" data-i18n="nav.contact"></a>
+    </nav>
+    <div class="bar-right">
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="cz" aria-pressed="false">CZ</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        <button type="button" data-lang="ua" aria-pressed="true">UA</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- HERO -->
+<section id="hero" class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h1 class="hero-title">
+        <span data-i18n="hero.t1"></span>
+        <span class="hero-title-2" data-i18n="hero.t2"></span>
+      </h1>
+      <p class="hero-sub" data-i18n="hero.sub"></p>
+      <div class="hero-actions">
+        <a href="#shots" class="btn btn-primary" data-i18n="hero.b1"></a>
+        <a href="#packages" class="btn btn-ghost" data-i18n="hero.b2"></a>
+      </div>
+    </div>
+
+    <div>
+      <div class="hud" id="hud" aria-hidden="true">
+        <!-- aerial city, slowly scrolling -->
+        <svg class="ground" viewBox="0 0 400 330" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <pattern id="blocks" width="120" height="120" patternUnits="userSpaceOnUse">
+              <rect width="120" height="120" fill="#0b0b0b"/>
+              <path d="M0 60 H120 M60 0 V120" stroke="#2b2b2b" stroke-width="3" stroke-dasharray="8 8"/>
+              <rect x="8" y="8" width="46" height="46" fill="#151515"/><rect x="14" y="14" width="18" height="14" fill="#1e1e1e"/><rect x="36" y="32" width="12" height="16" fill="#232323"/>
+              <rect x="66" y="8" width="46" height="36" fill="#111"/><rect x="72" y="14" width="22" height="16" fill="#1b1b1b"/>
+              <rect x="66" y="68" width="46" height="44" fill="#171717"/><rect x="72" y="74" width="14" height="14" fill="#262626"/><rect x="92" y="90" width="14" height="16" fill="#1e1e1e"/>
+              <rect x="8" y="68" width="46" height="44" fill="#1a1208" opacity=".75"/><circle cx="22" cy="82" r="7" fill="#3a2410"/><circle cx="40" cy="98" r="9" fill="#3a2410"/>
+              <circle cx="60" cy="60" r="2" fill="#ffb066"/><circle cx="116" cy="56" r="1.6" fill="#ffd9a0"/><circle cx="30" cy="62" r="1.6" fill="#ffd9a0"/><circle cx="104" cy="116" r="1.6" fill="#ffb066"/>
+            </pattern>
+          </defs>
+          <g class="pan"><rect x="0" y="-120" width="400" height="570" fill="url(#blocks)"/></g>
+        </svg>
+        <span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
+        <div class="hud-top"><span class="rec"><i></i>REC <span id="recTime">00:00:12</span></span><span>4K · 60 · HDR</span></div>
+        <div class="hud-bot"><span>ALT <span id="altVal">82</span> m</span><span>12 m/s</span></div>
+
+        <div class="stage" id="stage">
+          <!-- ground shadow -->
+          <svg class="shadow" viewBox="0 0 400 300">
+            <g filter="url(#blur8)" fill="#000" stroke="#000">
+              <ellipse cx="200" cy="152" rx="30" ry="46" opacity=".55" stroke="none"/>
+              <path d="M180 134 L122 100 M220 134 L278 100 M178 166 L116 212 M222 166 L284 212" stroke-width="12" stroke-linecap="round" opacity=".4" fill="none"/>
+              <circle cx="122" cy="100" r="36" opacity=".12" stroke="none"/><circle cx="278" cy="100" r="36" opacity=".12" stroke="none"/>
+              <circle cx="116" cy="212" r="36" opacity=".12" stroke="none"/><circle cx="284" cy="212" r="36" opacity=".12" stroke="none"/>
+            </g>
+          </svg>
+          <!-- drone, top view -->
+          <div class="tilt" id="tilt">
+            <svg class="fly" viewBox="0 0 400 300">
+              <defs>
+                <linearGradient id="bodyG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6f8fb"/><stop offset=".55" stop-color="#cdd3dd"/><stop offset="1" stop-color="#9aa2b1"/></linearGradient>
+                <linearGradient id="shellG" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#b9c0cc"/><stop offset=".5" stop-color="#eef1f6"/><stop offset="1" stop-color="#aab2c0"/></linearGradient>
+                <linearGradient id="glassG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2a3550"/><stop offset=".5" stop-color="#080b14"/><stop offset="1" stop-color="#1c2640"/></linearGradient>
+                <radialGradient id="lensG" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#7fb8ff"/><stop offset=".35" stop-color="#1c3a78"/><stop offset="1" stop-color="#04060c"/></radialGradient>
+                <radialGradient id="podG" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#5a6275"/><stop offset="1" stop-color="#1b1f29"/></radialGradient>
+                <linearGradient id="bladeG" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8a93a4"/><stop offset=".5" stop-color="#dfe4ec"/><stop offset="1" stop-color="#8a93a4"/></linearGradient>
+              </defs>
+
+              <!-- arms -->
+              <g stroke-linecap="round" fill="none">
+                <path d="M180 134 L122 100" stroke="#8f97a6" stroke-width="14"/><path d="M180 134 L122 100" stroke="#dfe3ea" stroke-width="6" opacity=".8"/>
+                <path d="M220 134 L278 100" stroke="#8f97a6" stroke-width="14"/><path d="M220 134 L278 100" stroke="#dfe3ea" stroke-width="6" opacity=".8"/>
+                <path d="M178 166 L116 212" stroke="#8f97a6" stroke-width="14"/><path d="M178 166 L116 212" stroke="#dfe3ea" stroke-width="6" opacity=".8"/>
+                <path d="M222 166 L284 212" stroke="#8f97a6" stroke-width="14"/><path d="M222 166 L284 212" stroke="#dfe3ea" stroke-width="6" opacity=".8"/>
+              </g>
+
+              <!-- motors + props -->
+              <g>
+                <circle cx="122" cy="100" r="13" fill="url(#podG)" stroke="#0b0d12"/><circle cx="278" cy="100" r="13" fill="url(#podG)" stroke="#0b0d12"/>
+                <circle cx="116" cy="212" r="13" fill="url(#podG)" stroke="#0b0d12"/><circle cx="284" cy="212" r="13" fill="url(#podG)" stroke="#0b0d12"/>
+              </g>
+              <g>
+                <circle cx="122" cy="100" r="37" fill="rgba(215,228,255,.08)" stroke="rgba(215,228,255,.22)"/>
+                <circle cx="278" cy="100" r="37" fill="rgba(215,228,255,.08)" stroke="rgba(215,228,255,.22)"/>
+                <circle cx="116" cy="212" r="37" fill="rgba(215,228,255,.08)" stroke="rgba(215,228,255,.22)"/>
+                <circle cx="284" cy="212" r="37" fill="rgba(215,228,255,.08)" stroke="rgba(215,228,255,.22)"/>
+              </g>
+              <g class="prop"><ellipse cx="122" cy="100" rx="37" ry="4.6" fill="url(#bladeG)" opacity=".85"/></g>
+              <g class="prop rev"><ellipse cx="278" cy="100" rx="37" ry="4.6" fill="url(#bladeG)" opacity=".85"/></g>
+              <g class="prop rev"><ellipse cx="116" cy="212" rx="37" ry="4.6" fill="url(#bladeG)" opacity=".85"/></g>
+              <g class="prop"><ellipse cx="284" cy="212" rx="37" ry="4.6" fill="url(#bladeG)" opacity=".85"/></g>
+              <g fill="#1b1f29" stroke="#6b7488"><circle cx="122" cy="100" r="5"/><circle cx="278" cy="100" r="5"/><circle cx="116" cy="212" r="5"/><circle cx="284" cy="212" r="5"/></g>
+
+              <!-- body -->
+              <path d="M178 114 Q200 106 222 114 L231 142 L229 186 Q200 200 171 186 L169 142 Z" fill="url(#bodyG)" stroke="#6f7787" stroke-width="1.2"/>
+              <path d="M184 128 H216 Q222 128 222 134 V176 Q222 184 214 184 H186 Q178 184 178 176 V134 Q178 128 184 128 Z" fill="url(#shellG)" stroke="#9aa2b1" stroke-width=".8"/>
+              <path d="M184 146 H216 M184 156 H216 M184 166 H216" stroke="#8d95a5" stroke-width=".9" opacity=".7"/>
+              <rect x="192" y="134" width="16" height="6" rx="3" fill="#aeb5c2" stroke="#8d95a5" stroke-width=".6"/>
+              <!-- front obstacle sensors -->
+              <rect x="180" y="117" width="40" height="8" rx="4" fill="url(#glassG)" stroke="#0b0d12" stroke-width=".8"/>
+              <circle cx="186" cy="121" r="1.6" fill="#7fb8ff" opacity=".8"/><circle cx="214" cy="121" r="1.6" fill="#7fb8ff" opacity=".8"/>
+              <!-- rear sensors -->
+              <rect x="183" y="185" width="34" height="6" rx="3" fill="url(#glassG)" stroke="#0b0d12" stroke-width=".8"/>
+              <!-- status LEDs -->
+              <circle class="led" cx="171" cy="140" r="2.2" fill="#ff4a3d"/><circle class="led" cx="229" cy="140" r="2.2" fill="#ff4a3d"/>
+              <circle cx="172" cy="184" r="2" fill="#41e39a"/><circle cx="228" cy="184" r="2" fill="#41e39a"/>
+
+              <!-- gimbal camera -->
+              <g class="gimbal">
+                <rect x="188" y="96" width="24" height="24" rx="9" fill="#171b24" stroke="#4a5163" stroke-width="1.2"/>
+                <circle cx="200" cy="100" r="8.5" fill="url(#lensG)" stroke="#05070c" stroke-width="1.4"/>
+                <circle cx="197" cy="97" r="2" fill="#fff" opacity=".7"/>
+                <circle cx="200" cy="113" r="4" fill="#2a3040" stroke="#5a6275" stroke-width=".8"/>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="spec-card">
+        <div class="spec"><span data-icon="film"></span><div><b data-i18n="sp1.t"></b><span class="d" data-i18n="sp1.d"></span></div></div>
+        <div class="spec"><span data-icon="phone"></span><div><b data-i18n="sp2.t"></b><span class="d" data-i18n="sp2.d"></span></div></div>
+        <div class="spec"><span data-icon="moon"></span><div><b data-i18n="sp3.t"></b><span class="d" data-i18n="sp3.d"></span></div></div>
+        <div class="spec"><span data-icon="shield"></span><div><b data-i18n="sp4.t"></b><span class="d" data-i18n="sp4.d"></span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true"><div class="ticker-track"><span data-i18n="tk.1"></span><span data-i18n="tk.2"></span><span data-i18n="tk.3"></span><span data-i18n="tk.4"></span></div></div>
+
+<!-- ADVANTAGES -->
+<section id="advantages" class="section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2 data-i18n="adv.title"></h2>
+      <p data-i18n="adv.sub"></p>
+    </div>
+    <div class="adv-grid">
+      <article class="card reveal" style="--d:0s"><span class="ico" data-icon="film"></span><h3 data-i18n="a1.t"></h3><p data-i18n="a1.d"></p></article>
+      <article class="card reveal" style="--d:.08s"><span class="ico" data-icon="phone"></span><h3 data-i18n="a2.t"></h3><p data-i18n="a2.d"></p></article>
+      <article class="card reveal" style="--d:.16s"><span class="ico" data-icon="moon"></span><h3 data-i18n="a3.t"></h3><p data-i18n="a3.d"></p></article>
+      <article class="card reveal" style="--d:.24s"><span class="ico" data-icon="clock"></span><h3 data-i18n="a4.t"></h3><p data-i18n="a4.d"></p></article>
+    </div>
+  </div>
+</section>
+
+<!-- SHOTS -->
+<section id="shots" class="section">
+  <div class="wrap">
+    <div class="section-head reveal"><h2 data-i18n="shots.title"></h2><p data-i18n="shots.sub"></p></div>
+    <div class="shots-grid">
+      <article class="card shot reveal" style="--d:0.06s"><div class="shot-viz" data-shot="1"></div><h3 data-i18n="sh1.t"></h3><p data-i18n="sh1.d"></p></article>
+      <article class="card shot reveal" style="--d:0.12s"><div class="shot-viz" data-shot="2"></div><h3 data-i18n="sh2.t"></h3><p data-i18n="sh2.d"></p></article>
+      <article class="card shot reveal" style="--d:0.18s"><div class="shot-viz" data-shot="3"></div><h3 data-i18n="sh3.t"></h3><p data-i18n="sh3.d"></p></article>
+      <article class="card shot reveal" style="--d:0.24s"><div class="shot-viz" data-shot="4"></div><h3 data-i18n="sh4.t"></h3><p data-i18n="sh4.d"></p></article>
+      <article class="card shot reveal" style="--d:0.30s"><div class="shot-viz" data-shot="5"></div><h3 data-i18n="sh5.t"></h3><p data-i18n="sh5.d"></p></article>
+      <article class="card shot reveal" style="--d:0.36s"><div class="shot-viz" data-shot="6"></div><h3 data-i18n="sh6.t"></h3><p data-i18n="sh6.d"></p></article>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2 data-i18n="srv.title"></h2>
+      <p data-i18n="srv.sub"></p>
+    </div>
+    <div class="srv-grid">
+      <article class="card reveal" style="--d:0s"><span class="ico" data-icon="home"></span><h3 data-i18n="s1.t"></h3><p data-i18n="s1.d"></p></article>
+      <article class="card reveal" style="--d:.08s"><span class="ico" data-icon="spark"></span><h3 data-i18n="s2.t"></h3><p data-i18n="s2.d"></p></article>
+      <article class="card reveal" style="--d:.16s"><span class="ico" data-icon="phone"></span><h3 data-i18n="s3.t"></h3><p data-i18n="s3.d"></p></article>
+      <article class="card reveal" style="--d:.24s"><span class="ico" data-icon="scan"></span><h3 data-i18n="s4.t"></h3><p data-i18n="s4.d"></p></article>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section id="packages" class="section" style="background:#0f0f0f">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2 data-i18n="pr.title"></h2>
+      <p data-i18n="pr.sub"></p>
+    </div>
+    <div class="price-grid">
+      <article class="card plan reveal" style="--d:0s">
+        <h3>Social &amp; Reels</h3>
+        <p class="ptag" data-i18n="k1.tag"></p>
+        <div class="price"><small data-i18n="pr.from"></small>2 900 Kč</div>
+        <ul>
+          <li><span data-icon="check"></span><span data-i18n="k1.f1"></span></li>
+          <li><span data-icon="check"></span><span data-i18n="k1.f2"></span></li>
+          <li><span data-icon="check"></span><span data-i18n="k1.f3"></span></li>
+          <li><span data-icon="check"></span><span data-i18n="k1.f4"></span></li>
+        </ul>
+        <button type="button" class="btn btn-ghost justify-center" data-pkg="social" data-i18n="pr.cta"></button>
+      </article>
+
+      <article class="card plan popular reveal" style="--d:.1s">
+        <span class="badge" data-i18n="pr.popular"></span>
+        <h3>Commercial &amp; Real Estate</h3>
+        <p class="ptag" data-i18n="k2.tag"></p>
+        <div class="price"><small data-i18n="pr.from"></small>6 900 Kč</div>
+        <ul>
+          <li><span data-icon="check"></span><span data-i18n="k2.f1"></span></li>
+          <li><span data-icon="check"></span><span data-i18n="k2.f2"></span></li>
+          <li><span data-icon="check"></span><span data-i18n="k2.f3"></span></li>
+          <li><span data-icon="check"></span><span data-i18n="k2.f4"></span></li>
+        </ul>
+        <button type="button" class="btn btn-primary justify-center" data-pkg="commercial" data-i18n="pr.cta"></button>
+      </article>
+
+      <article class="card plan reveal" style="--d:.2s">
+        <h3>Event &amp; Full Production</h3>
+        <p class="ptag" data-i18n="k3.tag"></p>
+        <div class="price"><small data-i18n="pr.from"></small>14 900 Kč</div>
+        <ul>
+          <li><span data-icon="check"></span><span data-i18n="k3.f1"></span></li>
+          <li><span data-icon="check"></span><span data-i18n="k3.f2"></span></li>
+          <li><span data-icon="check"></span><span data-i18n="k3.f3"></span></li>
+          <li><span data-icon="check"></span><span data-i18n="k3.f4"></span></li>
+        </ul>
+        <button type="button" class="btn btn-ghost justify-center" data-pkg="event" data-i18n="pr.cta"></button>
+      </article>
+    </div>
+    <p class="price-note" data-i18n="pr.note"></p>
+  </div>
+</section>
+
+<!-- TRAVEL -->
+<section id="travel" class="section">
+  <div class="wrap travel reveal">
+    <div>
+      <h2 data-i18n="tr.title"></h2>
+      <p class="tr-sub" data-i18n="tr.sub"></p>
+      <div class="rate"><b>10</b><span>Kč / <span data-i18n="tr.km"></span></span></div>
+    </div>  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section" style="background:#0f0f0f">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2 data-i18n="ct.title"></h2>
+      <p data-i18n="ct.sub"></p>
+    </div>
+
+    <form id="leadForm" class="form-card reveal" novalidate autocomplete="on">
+      <!-- Honeypot: hidden from people, bots tend to fill it -->
+      <div class="hp" aria-hidden="true">
+        <label>Website <input type="text" name="website" id="website" tabindex="-1" autocomplete="off"></label>
+      </div>
+
+      <div class="two">
+        <div class="field" data-field="name">
+          <label for="name" data-i18n="fm.name"></label>
+          <input id="name" name="name" type="text" maxlength="80" autocomplete="name" data-i18n-ph="fm.name.ph" required>
+          <p class="err" data-err="name"></p>
+        </div>
+        <div class="field" data-field="contact">
+          <label for="contact-input" data-i18n="fm.contact"></label>
+          <input id="contact-input" name="contact" type="text" maxlength="120" autocomplete="email" inputmode="email" data-i18n-ph="fm.contact.ph" required>
+          <p class="err" data-err="contact"></p>
+        </div>
+      </div>
+
+      <div class="field" data-field="package">
+        <label for="package" data-i18n="fm.package"></label>
+        <select id="package" name="package" required>
+          <option value="" data-i18n="o.default"></option>
+          <option value="social" data-i18n="o.social"></option>
+          <option value="commercial" data-i18n="o.commercial"></option>
+          <option value="event" data-i18n="o.event"></option>
+          <option value="custom" data-i18n="o.custom"></option>
+        </select>
+        <p class="err" data-err="package"></p>
+      </div>
+
+      <div class="field" data-field="message">
+        <label for="message" data-i18n="fm.message"></label>
+        <textarea id="message" name="message" maxlength="1000" data-i18n-ph="fm.message.ph" required></textarea>
+        <p class="err" data-err="message"></p>
+      </div>
+
+      <div class="field" data-field="captcha" style="margin-bottom:0">
+        <div class="captcha">
+          <span data-icon="shield"></span>
+          <label class="q" for="captcha" id="captchaQ"></label>
+          <input id="captcha" name="captcha" type="text" inputmode="numeric" autocomplete="off" maxlength="3">
+          <span class="hint" data-i18n="cap.hint"></span>
+        </div>
+        <p class="err" data-err="captcha"></p>
+      </div>
+
+      <button id="submitBtn" type="submit" class="btn btn-primary" data-i18n="fm.submit"></button>
+      <p id="formStatus" class="status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span data-i18n="ft.rights"></span>
+    <span data-i18n="ft.law"></span>
+  </div>
+</footer>
+
+<script>
+/* ---------------- Icons ---------------- */
+const ICONS = {
+  menu:'<path d="M4 7h16M4 12h16M4 17h16"/>',
+  film:'<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 3v18M17 3v18M3 8h4M3 12h4M3 16h4M17 8h4M17 12h4M17 16h4"/>',
+  phone:'<rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/>',
+  moon:'<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>',
+  shield:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/>',
+  clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  check:'<path d="M5 12.5l4.5 4.5L19 7.5"/>',
+  x:'<path d="M6 6l12 12M18 6L6 18"/>',
+  home:'<path d="M3 21V9l9-6 9 6v12"/><path d="M9 21v-7h6v7"/>',
+  spark:'<path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 15l.7 1.8 1.8.7-1.8.7L19 20l-.7-1.8-1.8-.7 1.8-.7z"/>',
+  scan:'<path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"/><path d="M7 12h10"/>',
+  play:'<path d="M8 5l11 7-11 7z" fill="currentColor"/>',
+  video:'<rect x="2" y="6" width="14" height="12" rx="2"/><path d="M22 8l-6 4 6 4z"/>',
+  photo:'<rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3.5"/>',
+  pause:'<rect x="6" y="5" width="4" height="14" rx="1" fill="currentColor"/><rect x="14" y="5" width="4" height="14" rx="1" fill="currentColor"/>',
+  download:'<path d="M12 4v11M7 11l5 5 5-5M5 20h14"/>',
+  replay:'<path d="M4 12a8 8 0 1 0 2.6-5.9M4 4v5h5"/>'
+};
+const svgIcon = n => '<svg class="i" viewBox="0 0 24 24" aria-hidden="true">'+ICONS[n]+'</svg>';
+function paintIcons(root){ (root||document).querySelectorAll('[data-icon]').forEach(el=>{ if(!el.dataset.done){ el.insertAdjacentHTML('afterbegin', svgIcon(el.dataset.icon)); el.dataset.done='1'; } }); }
+
+/* ---------------- Translations ---------------- */
+const I18N = {
+ua:{
+ "meta.title":"SkyLens Media | Професійна аерозйомка у 4K HDR",
+ "nav.adv":"Переваги","nav.portfolio":"Портфоліо","nav.services":"Послуги","nav.packages":"Пакети","nav.contact":"Контакти",
+ "cta.order":"Замовити зйомку",
+ "nav.shots":"Кадри","nav.travel":"Виїзд","tk.1":"Нерухомість","tk.2":"Події","tk.3":"Будівництво","tk.4":"Reels / TikTok","shots.title":"Фірмові кадри","shots.sub":"Шість рухів камери, з яких складається гарне відео з повітря.","sh1.t":"Орбіта","sh1.d":"Круговий обліт навколо об’єкта.","sh2.t":"Розкриття","sh2.d":"Підйом, що відкриває об’єкт і локацію.","sh3.t":"Відліт назад","sh3.d":"Дрон віддаляється й набирає висоту.","sh4.t":"Вид зверху","sh4.d":"Пряме вертикальне сканування території.","sh5.t":"Супровід","sh5.d":"Дрон летить паралельно рухомому об’єкту.","sh6.t":"Проліт","sh6.d":"Плавний проліт між елементами сцени.","tr.title":"Виїзд за межі Пардубіце","tr.sub":"Працюємо не лише в місті. Виїзд оплачується за кілометраж в обидві сторони.","tr.km":"км","tr.label":"Відстань від Пардубіце в один бік, км","tr.total":"Вартість виїзду","tr.detail":"{one} км × 2 (туди й назад) = {two} км × {rate} Kč",
+ "nav.map":"Карта",
+ "map.title":"Карта маршруту","map.sub":"Інтерактивна карта з анімацією проходження маршруту. Завантажте GPX-файл і відкрийте його в навігаторі, годиннику чи спортивному застосунку.",
+ "map.aria":"Карта маршруту з анімацією","map.dist":"Дистанція","map.gain":"Набір висоти","map.alt":"Висоти","map.type":"Тип","map.loop":"Кільцевий","map.line":"Від точки до точки",
+ "map.covered":"Пройдено","map.altnow":"Висота","map.km":"км","map.m":"м",
+ "map.play":"Відтворити","map.pause":"Пауза","map.restart":"Спочатку","map.speed":"Швидкість","map.scrub":"Положення на маршруті",
+ "map.download":"Завантажити GPX","map.profile":"Профіль висоти","map.elevnote":"Вертикальний масштаб збільшено для наочності.",
+ "map.sf":"Старт / Фініш","map.start":"Старт","map.finish":"Фініш",
+ "hero.t1":"Вражаюча аерозйомка у 4K HDR","hero.t2":"Професійна відеозйомка з дрона",
+ "hero.sub":"Нерухомість, промо-відео, заходи, будівництво та контент для Reels/TikTok з висоти пташиного польоту.",
+ "hero.b1":"Дивитись кадри","hero.b2":"Обрати пакет",
+ "sp1.t":"4K 60fps HDR","sp1.d":"Деталізована картинка з широким динамічним діапазоном",
+ "sp2.t":"Вертикальне 4K","sp2.d":"Нативний формат для Reels, TikTok і Shorts",
+ "sp3.t":"Нічна зйомка","sp3.d":"Чисті кадри на заході сонця й уночі",
+ "sp4.t":"Компактний дрон","sp4.d":"Безпечна та тиха зйомка в місті",
+ "adv.title":"Чому обирають нас","adv.sub":"Якісна картинка, зручні формати та швидка віддача готового матеріалу.",
+ "a1.t":"4K/60fps HDR","a1.d":"Плавний рух і запас по світлах та тінях: фасади, скло й небо виглядають природно, без пересвітів.",
+ "a2.t":"Вертикальна зйомка 4K","a2.d":"Вертикальний кадр знімається одразу, без обрізання горизонтального відео, тож Reels і TikTok не втрачають якості.",
+ "a3.t":"Нічна зйомка","a3.d":"Чисте зображення з малим шумом на сході, заході сонця й уночі: вогні міста, вечірні події, підсвічені об’єкти.",
+ "a4.t":"Монтаж під ключ","a4.d":"Швидко віддаємо готовий матеріал з колірокорекцією та монтажем під ваші задачі.",
+ "srv.title":"Послуги","srv.sub":"Знімаємо для тих, кому потрібне відео з повітря: від одного будинку до цілого фестивалю.",
+ "s1.t":"Нерухомість та архітектура","s1.d":"Фасади, територія й прольоти по об’єкту, щоб покупець одразу бачив локацію та масштаб.",
+ "s2.t":"Події, весілля та фестивалі","s2.d":"Загальні плани подій і ефектні кадри з висоти, які доповнюють зйомку з землі.",
+ "s3.t":"Промо для бізнесу та Social Media","s3.d":"Ролики для Reels, TikTok і Shorts та рекламні відео для сайту й кампаній.",
+ "s4.t":"Інспекція об’єктів та будівництва","s4.d":"Огляд дахів і конструкцій, фотофіксація етапів будівництва для звітів і замовників.",
+ "pr.title":"Пакети","pr.sub":"Три формати роботи. Точну вартість підтверджуємо після короткого брифу.","pr.popular":"Популярний","pr.from":"від","pr.cta":"Замовити цей пакет",
+ "pr.note":"Ціни орієнтовні: остаточна вартість залежить від локації та обсягу робіт.",
+ "k1.tag":"Базовий: для соцмереж",
+ "k1.f1":"Вертикальна зйомка 4K HDR","k1.f2":"1–2 короткі ролики для Reels, TikTok, Shorts","k1.f3":"Базова колірокорекція та підбір трендової музики","k1.f4":"Швидка віддача за 24–48 годин",
+ "k2.tag":"Популярний: для бізнесу та нерухомості",
+ "k2.f1":"Горизонтальна та вертикальна зйомка у 4K 60fps","k2.f2":"Повний монтаж промо-ролика до 1–2 хвилин + 2 короткі адаптації для соцмереж","k2.f3":"Професійна колірокорекція (LUTs) і звукові ефекти (SFX)","k2.f4":"Зйомка фасадів, прилеглої території та інтер’єру (прольоти)",
+ "k3.tag":"Преміум: події та індивідуальні проєкти",
+ "k3.f1":"Повний день зйомки: нерухомість, події, будівництво, заходи","k3.f2":"Денна та нічна зйомка","k3.f3":"Повна обробка, розширений монтаж, графіка й титри, адаптація під усі платформи","k3.f4":"Передача всіх сирих матеріалів зйомки",
+ "pf.title":"Портфоліо","pf.sub":"Оберіть категорію й відкрийте кадр, щоб побачити його у великому форматі.",
+ "f.all":"Усе","f.re":"Нерухомість","f.ev":"Події","f.sm":"Social і промо","f.cs":"Будівництво",
+ "t1":"Новобудова на заході сонця","t2":"Фестиваль на центральній площі","t3":"Вертикальний Reels: кав’ярня в старому місті","t4":"Будівництво: етапи та кран","t5":"Заміський будинок: територія та басейн","t6":"Нічне місто: світлові траси","t7":"Весілля в саду: церемонія з висоти","t8":"Інспекція даху та сонячних панелей","t9":"Курорт біля озера: промо-ролик",
+ "kind.video":"Відео","kind.photo":"Фото","lb.close":"Закрити",
+ "ct.title":"Замовити зйомку","ct.sub":"Опишіть задачу, і ми запропонуємо пакет та терміни.",
+ "fm.name":"Ім’я","fm.name.ph":"Ваше ім’я","fm.contact":"Email або телефон","fm.contact.ph":"name@email.com або +420 777 123 456",
+ "fm.package":"Обраний пакет","o.default":"Оберіть пакет","o.social":"Social & Reels","o.commercial":"Commercial & Real Estate","o.event":"Event & Full Production","o.custom":"Індивідуальний проєкт",
+ "fm.message":"Повідомлення","fm.message.ph":"Що знімаємо, де і коли?","cap.q":"Скільки буде {a} + {b}?","cap.hint":"Захист від спаму","fm.submit":"Надіслати заявку",
+ "err.name":"Вкажіть ім’я (2–60 символів, без символів < >).","err.contact":"Вкажіть коректний email або телефон.","err.package":"Оберіть пакет.","err.message":"Напишіть повідомлення (10–1000 символів).",
+ "err.unsafe":"Поле містить недопустимі символи або код.","err.captcha":"Неправильна відповідь. Спробуйте ще раз.","err.rate":"Забагато спроб. Повторіть через {s} с.","err.fast":"Форму заповнено надто швидко. Перевірте дані й спробуйте ще раз.",
+ "ok":"Дякуємо! Заявку надіслано.",
+ "ft.rights":"© 2026 SkyLens Media. Професійна аерозйомка.","ft.law":"Польоти виконуються з дотриманням місцевих правил та обмежень повітряного простору."
+},
+en:{
+ "meta.title":"SkyLens Media | Professional 4K HDR Aerial Filming",
+ "nav.adv":"Advantages","nav.portfolio":"Portfolio","nav.services":"Services","nav.packages":"Packages","nav.contact":"Contact",
+ "cta.order":"Book a shoot",
+ "nav.shots":"Shots","nav.travel":"Travel","tk.1":"Real estate","tk.2":"Events","tk.3":"Construction","tk.4":"Reels / TikTok","shots.title":"Signature shots","shots.sub":"Six camera moves that make great aerial video.","sh1.t":"Orbit","sh1.d":"A full circle around the subject.","sh2.t":"Reveal","sh2.d":"A rise that unveils the subject and its surroundings.","sh3.t":"Dronie","sh3.d":"The drone pulls back and climbs.","sh4.t":"Top-down","sh4.d":"A straight-down scan of an area.","sh5.t":"Follow","sh5.d":"The drone flies alongside a moving subject.","sh6.t":"Fly-through","sh6.d":"A smooth pass between scene elements.","tr.title":"Travel outside Pardubice","tr.sub":"We work beyond the city too. Travel is charged per kilometre, both ways.","tr.km":"km","tr.label":"One-way distance from Pardubice, km","tr.total":"Travel cost","tr.detail":"{one} km × 2 (there and back) = {two} km × {rate} Kč",
+ "nav.map":"Map",
+ "map.title":"Route map","map.sub":"An interactive map with an animated run-through of the route. Download the GPX file and open it in a navigator, watch or sports app.",
+ "map.aria":"Animated route map","map.dist":"Distance","map.gain":"Elevation gain","map.alt":"Altitude","map.type":"Type","map.loop":"Loop","map.line":"Point to point",
+ "map.covered":"Covered","map.altnow":"Altitude","map.km":"km","map.m":"m",
+ "map.play":"Play","map.pause":"Pause","map.restart":"Restart","map.speed":"Speed","map.scrub":"Position on the route",
+ "map.download":"Download GPX","map.profile":"Elevation profile","map.elevnote":"Vertical scale exaggerated for clarity.",
+ "map.sf":"Start / Finish","map.start":"Start","map.finish":"Finish",
+ "hero.t1":"Stunning 4K HDR aerial filming","hero.t2":"Professional drone videography",
+ "hero.sub":"Real estate, promo videos, events, construction and Reels/TikTok content from a bird's-eye view.",
+ "hero.b1":"View shots","hero.b2":"Choose a package",
+ "sp1.t":"4K 60fps HDR","sp1.d":"Detailed footage with a wide dynamic range",
+ "sp2.t":"Vertical 4K","sp2.d":"Native format for Reels, TikTok and Shorts",
+ "sp3.t":"Night shooting","sp3.d":"Clean frames at dusk and after dark",
+ "sp4.t":"Compact drone","sp4.d":"Safe, quiet shooting in the city",
+ "adv.title":"Why clients choose us","adv.sub":"Great image quality, social-ready formats and fast delivery of finished material.",
+ "a1.t":"4K/60fps HDR","a1.d":"Smooth motion and room in the highlights and shadows, so facades, glass and sky look natural without blown-out areas.",
+ "a2.t":"Vertical 4K shooting","a2.d":"Vertical frames are captured natively, with no cropping from a horizontal shot, so Reels and TikTok keep full quality.",
+ "a3.t":"Night shooting","a3.d":"Clean, low-noise images at sunrise, sunset and after dark: city lights, evening events, illuminated buildings.",
+ "a4.t":"Turnkey editing","a4.d":"We deliver finished material quickly, colour-graded and edited for your goals.",
+ "srv.title":"Services","srv.sub":"We shoot for anyone who needs video from above, from a single house to an entire festival.",
+ "s1.t":"Real estate & architecture","s1.d":"Facades, grounds and fly-throughs so buyers instantly see the location and scale.",
+ "s2.t":"Events, weddings & festivals","s2.d":"Wide establishing shots and striking views from above that complement ground footage.",
+ "s3.t":"Business promo & social media","s3.d":"Reels, TikTok and Shorts clips plus promo videos for websites and campaigns.",
+ "s4.t":"Site inspection & construction","s4.d":"Roof and structure surveys, plus photo records of construction stages for reports and clients.",
+ "pr.title":"Packages","pr.sub":"Three ways to work together. We confirm the exact price after a short brief.","pr.popular":"Most popular","pr.from":"from","pr.cta":"Book this package",
+ "pr.note":"Indicative prices: the final cost depends on location and scope.",
+ "k1.tag":"Basic: for social media",
+ "k1.f1":"Vertical 4K HDR shooting","k1.f2":"1–2 short videos for Reels, TikTok, Shorts","k1.f3":"Basic colour grading and trending music selection","k1.f4":"Fast delivery in 24–48 hours",
+ "k2.tag":"Popular: for business & real estate",
+ "k2.f1":"Horizontal and vertical shooting in 4K 60fps","k2.f2":"Full promo edit up to 1–2 minutes + 2 short social cuts","k2.f3":"Professional colour grading (LUTs) and sound effects (SFX)","k2.f4":"Facades, grounds and interiors (fly-throughs)",
+ "k3.tag":"Premium: events & custom projects",
+ "k3.f1":"Full shooting day: real estate, events, construction","k3.f2":"Day and night shooting","k3.f3":"Full post-production, advanced editing, graphics and titles, adaptation for every platform","k3.f4":"All raw footage handed over",
+ "pf.title":"Portfolio","pf.sub":"Pick a category and open a shot to see it full size.",
+ "f.all":"All","f.re":"Real estate","f.ev":"Events","f.sm":"Social & promo","f.cs":"Construction",
+ "t1":"New development at sunset","t2":"Festival on the main square","t3":"Vertical Reels: an old-town café","t4":"Construction: stages and crane","t5":"Country house: grounds and pool","t6":"The city at night: light trails","t7":"Garden wedding: ceremony from above","t8":"Roof and solar panel inspection","t9":"Lakeside resort: promo video",
+ "kind.video":"Video","kind.photo":"Photo","lb.close":"Close",
+ "ct.title":"Book a shoot","ct.sub":"Describe the job and we'll suggest a package and timing.",
+ "fm.name":"Name","fm.name.ph":"Your name","fm.contact":"Email or phone","fm.contact.ph":"name@email.com or +420 777 123 456",
+ "fm.package":"Selected package","o.default":"Choose a package","o.social":"Social & Reels","o.commercial":"Commercial & Real Estate","o.event":"Event & Full Production","o.custom":"Custom project",
+ "fm.message":"Message","fm.message.ph":"What are we shooting, where and when?","cap.q":"What is {a} + {b}?","cap.hint":"Spam protection","fm.submit":"Send request",
+ "err.name":"Enter your name (2–60 characters, no < > symbols).","err.contact":"Enter a valid email or phone number.","err.package":"Choose a package.","err.message":"Write a message (10–1000 characters).",
+ "err.unsafe":"This field contains disallowed characters or code.","err.captcha":"Wrong answer. Please try again.","err.rate":"Too many attempts. Try again in {s} s.","err.fast":"The form was filled in too quickly. Check your details and try again.",
+ "ok":"Thank you! Your request has been sent.",
+ "ft.rights":"© 2026 SkyLens Media. Professional aerial filming.","ft.law":"Flights are carried out in compliance with local rules and airspace restrictions."
+},
+cz:{
+ "meta.title":"SkyLens Media | Profesionální letecké natáčení ve 4K HDR",
+ "nav.adv":"Výhody","nav.portfolio":"Portfolio","nav.services":"Služby","nav.packages":"Balíčky","nav.contact":"Kontakt",
+ "cta.order":"Objednat natáčení",
+ "nav.shots":"Záběry","nav.travel":"Výjezd","tk.1":"Nemovitosti","tk.2":"Akce","tk.3":"Stavby","tk.4":"Reels / TikTok","shots.title":"Signature záběry","shots.sub":"Šest pohybů kamery, ze kterých vzniká skvělé video z výšky.","sh1.t":"Orbit","sh1.d":"Kruhový přelet kolem objektu.","sh2.t":"Odhalení","sh2.d":"Stoupání, které odkryje objekt i okolí.","sh3.t":"Odlet","sh3.d":"Dron se vzdaluje a stoupá.","sh4.t":"Shora","sh4.d":"Přímý pohled dolů, snímání plochy.","sh5.t":"Doprovod","sh5.d":"Dron letí souběžně s pohyblivým objektem.","sh6.t":"Průlet","sh6.d":"Plynulý průlet mezi prvky scény.","tr.title":"Výjezd mimo Pardubice","tr.sub":"Natáčíme i mimo město. Výjezd se účtuje za kilometry tam i zpět.","tr.km":"km","tr.label":"Vzdálenost z Pardubic jedním směrem, km","tr.total":"Cena za výjezd","tr.detail":"{one} km × 2 (tam a zpět) = {two} km × {rate} Kč",
+ "nav.map":"Mapa",
+ "map.title":"Mapa trasy","map.sub":"Interaktivní mapa s animací průběhu trasy. Stáhněte si soubor GPX a otevřete ho v navigaci, hodinkách nebo sportovní aplikaci.",
+ "map.aria":"Mapa trasy s animací","map.dist":"Vzdálenost","map.gain":"Nastoupáno","map.alt":"Výšky","map.type":"Typ","map.loop":"Okruh","map.line":"Z bodu do bodu",
+ "map.covered":"Ušlá vzdálenost","map.altnow":"Nadmořská výška","map.km":"km","map.m":"m",
+ "map.play":"Přehrát","map.pause":"Pauza","map.restart":"Znovu","map.speed":"Rychlost","map.scrub":"Poloha na trase",
+ "map.download":"Stáhnout GPX","map.profile":"Výškový profil","map.elevnote":"Svislé měřítko je pro přehlednost zvětšeno.",
+ "map.sf":"Start / Cíl","map.start":"Start","map.finish":"Cíl",
+ "hero.t1":"Ohromující letecké záběry ve 4K HDR","hero.t2":"Profesionální natáčení dronem",
+ "hero.sub":"Nemovitosti, promo videa, akce, stavebnictví a obsah pro Reels/TikTok z ptačí perspektivy.",
+ "hero.b1":"Zobrazit záběry","hero.b2":"Vybrat balíček",
+ "sp1.t":"4K 60fps HDR","sp1.d":"Detailní obraz se širokým dynamickým rozsahem",
+ "sp2.t":"Vertikální 4K","sp2.d":"Nativní formát pro Reels, TikTok a Shorts",
+ "sp3.t":"Noční natáčení","sp3.d":"Čistý obraz za soumraku i v noci",
+ "sp4.t":"Kompaktní dron","sp4.d":"Bezpečné a tiché natáčení ve městě",
+ "adv.title":"Proč si vybrat nás","adv.sub":"Skvělý obraz, formáty pro sociální sítě a rychlé odevzdání hotového materiálu.",
+ "a1.t":"4K/60fps HDR","a1.d":"Plynulý pohyb a rezerva ve světlech i stínech, takže fasády, sklo i obloha vypadají přirozeně a bez přepalů.",
+ "a2.t":"Vertikální natáčení ve 4K","a2.d":"Vertikální záběr vzniká přímo, bez ořezu z vodorovného videa, takže Reels i TikTok drží plnou kvalitu.",
+ "a3.t":"Noční natáčení","a3.d":"Čistý obraz s nízkým šumem při východu i západu slunce a v noci: městská světla, večerní akce, nasvícené budovy.",
+ "a4.t":"Střih na klíč","a4.d":"Hotový materiál odevzdáváme rychle, s barevnou korekcí a střihem přesně pro vaše potřeby.",
+ "srv.title":"Služby","srv.sub":"Natáčíme pro každého, kdo potřebuje video z výšky: od jednoho domu po celý festival.",
+ "s1.t":"Nemovitosti a architektura","s1.d":"Fasády, okolí a přelety objektu, aby kupující hned viděl lokalitu i měřítko.",
+ "s2.t":"Akce, svatby a festivaly","s2.d":"Celkové záběry akcí a efektní pohledy z výšky, které doplní natáčení ze země.",
+ "s3.t":"Promo pro firmy a sociální sítě","s3.d":"Videa pro Reels, TikTok a Shorts i reklamní spoty pro web a kampaně.",
+ "s4.t":"Inspekce objektů a stavebnictví","s4.d":"Prohlídky střech a konstrukcí, fotodokumentace etap stavby pro reporty a investory.",
+ "pr.title":"Balíčky","pr.sub":"Tři způsoby spolupráce. Přesnou cenu potvrdíme po krátkém zadání.","pr.popular":"Nejoblíbenější","pr.from":"od","pr.cta":"Objednat tento balíček",
+ "pr.note":"Orientační ceny: konečná cena závisí na lokalitě a rozsahu.",
+ "k1.tag":"Základní: pro sociální sítě",
+ "k1.f1":"Vertikální natáčení ve 4K HDR","k1.f2":"1–2 krátká videa pro Reels, TikTok a Shorts","k1.f3":"Základní barevná korekce a výběr trendy hudby","k1.f4":"Rychlé odevzdání do 24–48 hodin",
+ "k2.tag":"Oblíbený: pro firmy a nemovitosti",
+ "k2.f1":"Horizontální i vertikální natáčení ve 4K/60 fps","k2.f2":"Kompletní střih promo videa do 1–2 minut + 2 krátké verze pro sociální sítě","k2.f3":"Profesionální barevná korekce (LUT) a zvukové efekty (SFX)","k2.f4":"Fasády, okolí a interiéry (přelety)",
+ "k3.tag":"Premium: akce a individuální projekty",
+ "k3.f1":"Celý den natáčení: nemovitosti, akce, stavby","k3.f2":"Denní i noční natáčení","k3.f3":"Kompletní zpracování, pokročilý střih, grafika a titulky, úprava pro všechny platformy","k3.f4":"Předání všech surových záznamů",
+ "pf.title":"Portfolio","pf.sub":"Vyberte kategorii a otevřete záběr ve velkém zobrazení.",
+ "f.all":"Vše","f.re":"Nemovitosti","f.ev":"Akce","f.sm":"Social a promo","f.cs":"Stavebnictví",
+ "t1":"Novostavba při západu slunce","t2":"Festival na hlavním náměstí","t3":"Vertikální Reels: kavárna ve starém městě","t4":"Stavba: etapy a jeřáb","t5":"Dům na venkově: pozemek a bazén","t6":"Noční město: světelné stopy","t7":"Svatba v zahradě: obřad z výšky","t8":"Inspekce střechy a solárních panelů","t9":"Resort u jezera: promo video",
+ "kind.video":"Video","kind.photo":"Foto","lb.close":"Zavřít",
+ "ct.title":"Objednat natáčení","ct.sub":"Popište zakázku a navrhneme balíček i termín.",
+ "fm.name":"Jméno","fm.name.ph":"Vaše jméno","fm.contact":"E-mail nebo telefon","fm.contact.ph":"name@email.cz nebo +420 777 123 456",
+ "fm.package":"Vybraný balíček","o.default":"Vyberte balíček","o.social":"Social & Reels","o.commercial":"Commercial & Real Estate","o.event":"Event & Full Production","o.custom":"Individuální projekt",
+ "fm.message":"Zpráva","fm.message.ph":"Co natáčíme, kde a kdy?","cap.q":"Kolik je {a} + {b}?","cap.hint":"Ochrana proti spamu","fm.submit":"Odeslat poptávku",
+ "err.name":"Zadejte jméno (2–60 znaků, bez znaků < >).","err.contact":"Zadejte platný e-mail nebo telefon.","err.package":"Vyberte balíček.","err.message":"Napište zprávu (10–1000 znaků).",
+ "err.unsafe":"Pole obsahuje nepovolené znaky nebo kód.","err.captcha":"Nesprávná odpověď. Zkuste to znovu.","err.rate":"Příliš mnoho pokusů. Zkuste to znovu za {s} s.","err.fast":"Formulář byl vyplněn příliš rychle. Zkontrolujte údaje a zkuste to znovu.",
+ "ok":"Děkujeme! Poptávka byla odeslána.",
+ "ft.rights":"© 2026 SkyLens Media. Profesionální letecké natáčení.","ft.law":"Lety probíhají v souladu s místními pravidly a omezeními vzdušného prostoru."
+}
+};
+const HTML_LANG = {cz:'cs', en:'en', ua:'uk'};
+const $  = (s,r=document) => r.querySelector(s);
+const $$ = (s,r=document) => Array.from(r.querySelectorAll(s));
+let LANG = 'ua';
+const t = (k,vars) => { let s = (I18N[LANG] && I18N[LANG][k]) || I18N.en[k] || k; if(vars){ for(const v in vars) s = s.replace('{'+v+'}', vars[v]); } return s; };
+const esc = s => String(s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+/* ---------------- Language ---------------- */
+function applyLang(l){
+  if(!I18N[l]) l='en';
+  LANG = l;
+  document.documentElement.lang = HTML_LANG[l];
+  document.title = t('meta.title');
+  $$('[data-i18n]').forEach(el=>{ el.textContent = t(el.dataset.i18n); });
+  $$('[data-i18n-ph]').forEach(el=>{ el.setAttribute('placeholder', t(el.dataset.i18nPh)); });
+  $$('[data-i18n-aria]').forEach(el=>{ el.setAttribute('aria-label', t(el.dataset.i18nAria)); });
+  $$('.lang button').forEach(b=>b.setAttribute('aria-pressed', String(b.dataset.lang===l)));
+  renderCaptchaText();
+  renderErrors();
+  try{ localStorage.setItem('skylens_lang', l); }catch(e){}
+}
+$$('.lang button').forEach(b=>b.addEventListener('click',()=>applyLang(b.dataset.lang)));
+
+/* ---------------- Scroll reveal ---------------- */
+(function(){
+  const els = $$('.reveal');
+  if(!('IntersectionObserver' in window)){ els.forEach(e=>e.classList.add('in')); return; }
+  const io = new IntersectionObserver((entries)=>{ entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } }); },{threshold:.12, rootMargin:'0px 0px -40px 0px'});
+  els.forEach(e=>io.observe(e));
+})();
+
+/* ---------------- Hero HUD: timer, altitude, pointer tilt ---------------- */
+(function(){
+  let s = 12, a = 0; const rec = $('#recTime'), alt = $('#altVal');
+  setInterval(()=>{ s = (s+1) % 3600; rec.textContent = '00:'+String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0'); a += .9; alt.textContent = String(80 + Math.round(Math.sin(a)*3)); }, 1000);
+  const hud = $('#hud'), tilt = $('#tilt');
+  hud.addEventListener('pointermove', e=>{
+    const r = hud.getBoundingClientRect(), x = (e.clientX-r.left)/r.width-.5, y = (e.clientY-r.top)/r.height-.5;
+    tilt.style.setProperty('--ry', (x*14).toFixed(1)+'deg'); tilt.style.setProperty('--rx', (-y*12).toFixed(1)+'deg');
+  });
+  hud.addEventListener('pointerleave', ()=>{ tilt.style.setProperty('--ry','0deg'); tilt.style.setProperty('--rx','0deg'); });
+})();
+
+/* ---------------- Contact form + anti-fraud ---------------- */
+const form = $('#leadForm'), statusEl = $('#formStatus'), submitBtn = $('#submitBtn');
+const ENDPOINT = 'https://script.google.com/macros/s/AKfycbx1NlguIyd-IpoYZdd4XxbTkinN1R08SnijskX_WR6uj0-JVzeoA2VObTIHJMc2rvd6Mg/exec'; // Google Apps Script web app -> Google Sheets
+let cap = {a:0,b:0}, startedAt = 0;
+const errState = {}; let statusState = null;
+
+function rnd(n){ if(window.crypto && crypto.getRandomValues){ const u=new Uint32Array(1); crypto.getRandomValues(u); return u[0]%n; } return Math.floor(Math.random()*n); }
+function newCaptcha(){ cap.a = 2+rnd(8); cap.b = 2+rnd(8); $('#captcha').value=''; renderCaptchaText(); }
+function renderCaptchaText(){ $('#captchaQ').textContent = t('cap.q',{a:cap.a,b:cap.b}); }
+
+function setErr(field,key,vars){ errState[field] = key ? {key,vars} : null; renderErrors(); }
+function renderErrors(){
+  $$('[data-err]').forEach(p=>{
+    const f = p.dataset.err, e = errState[f];
+    p.textContent = e ? t(e.key,e.vars) : '';
+    const wrap = p.closest('.field'); if(wrap) wrap.dataset.invalid = e ? 'true' : 'false';
+  });
+  if(statusState){ statusEl.textContent = t(statusState.key,statusState.vars); statusEl.className = 'status '+statusState.type; } else { statusEl.textContent=''; statusEl.className='status'; }
+}
+function setStatus(type,key,vars){ statusState = key ? {type,key,vars} : null; renderErrors(); }
+
+const UNSAFE = /<|>|javascript:|vbscript:|data:text|on[a-z]+\s*=|&#x?[0-9a-f]+;|\bscript\b|\beval\s*\(|\bdocument\.(cookie|write)/i;
+const cleanLine = s => String(s||'').replace(/[\u0000-\u001F\u007F]/g,' ').replace(/\s+/g,' ').trim();
+const cleanText = s => String(s||'').replace(/[\u0000-\u0009\u000B-\u001F\u007F]/g,' ').replace(/[ \t]+/g,' ').replace(/\n{3,}/g,'\n\n').trim();
+const EMAIL = /^[A-Za-z0-9._%+\-]{1,64}@[A-Za-z0-9\-]+(\.[A-Za-z0-9\-]+)*\.[A-Za-z]{2,}$/;
+const PHONE = /^\+?[0-9\s\-().]{9,20}$/;
+function validContact(v){
+  if(UNSAFE.test(v)) return 'err.unsafe';
+  if(v.includes('@')) return EMAIL.test(v) && v.length<=120 ? null : 'err.contact';
+  if(!PHONE.test(v)) return 'err.contact';
+  const digits = v.replace(/\D/g,''); return digits.length>=9 && digits.length<=15 ? null : 'err.contact';
+}
+
+/* client-side rate limit: min 60 s between sends, max 3 per hour */
+const RL_KEY='skylens_lead_times'; let memTimes=[];
+function getTimes(){ try{ const raw=localStorage.getItem(RL_KEY); const a=raw?JSON.parse(raw):[]; return Array.isArray(a)?a.filter(n=>typeof n==='number'):memTimes; }catch(e){ return memTimes; } }
+function saveTimes(a){ memTimes=a; try{ localStorage.setItem(RL_KEY, JSON.stringify(a)); }catch(e){} }
+function rateWait(){
+  const now=Date.now(), h=getTimes().filter(x=>now-x<3600000);
+  if(h.length>=3) return Math.ceil((3600000-(now-h[0]))/1000);
+  const last=h[h.length-1]; if(last && now-last<60000) return Math.ceil((60000-(now-last))/1000);
+  return 0;
+}
+
+form.addEventListener('focusin',()=>{ if(!startedAt) startedAt = Date.now(); });
+['name','contact','package','message','captcha'].forEach(f=>{
+  const el = f==='contact' ? $('#contact-input') : $('#'+f);
+  el.addEventListener('input',()=>{ if(errState[f]) setErr(f,null); });
+});
+
+function deliver(payload){
+  if(!ENDPOINT) return Promise.resolve();
+  return fetch(ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)});
+}
+
+form.addEventListener('submit', async e=>{
+  e.preventDefault();
+  Object.keys(errState).forEach(k=>errState[k]=null); setStatus(null);
+
+  // a) honeypot: bots fill it. Pretend success, send nothing.
+  if($('#website').value.trim()!==''){ form.reset(); newCaptcha(); startedAt=0; setStatus('ok','ok'); return; }
+
+  // b) rate limit
+  const wait = rateWait();
+  if(wait>0){ setStatus('bad','err.rate',{s:wait}); return; }
+
+  // d) strict validation
+  const name = cleanLine($('#name').value), contact = cleanLine($('#contact-input').value),
+        pkg = $('#package').value, msg = cleanText($('#message').value);
+  let first = null;
+  if(name.length<2 || name.length>60){ errState.name={key:'err.name'}; first=first||'#name'; }
+  else if(UNSAFE.test(name)){ errState.name={key:'err.unsafe'}; first=first||'#name'; }
+  const ce = validContact(contact); if(ce){ errState.contact={key:ce}; first=first||'#contact-input'; }
+  if(!['social','commercial','event','custom'].includes(pkg)){ errState.package={key:'err.package'}; first=first||'#package'; }
+  if(msg.length<10 || msg.length>1000){ errState.message={key:'err.message'}; first=first||'#message'; }
+  else if(UNSAFE.test(msg)){ errState.message={key:'err.unsafe'}; first=first||'#message'; }
+
+  // c) challenge
+  if(parseInt($('#captcha').value.trim(),10)!==cap.a+cap.b){ errState.captcha={key:'err.captcha'}; first=first||'#captcha'; }
+  if(first){ renderErrors(); $(first).focus(); return; }
+
+  // timing check: humans need more than a few seconds to fill the form
+  if(!startedAt || Date.now()-startedAt<4000){ setStatus('bad','err.fast'); return; }
+
+  submitBtn.disabled = true;
+  try{
+    await deliver({name, contact, package:pkg, message:msg, lang:LANG, ts:new Date().toISOString()});
+    const now=Date.now(); saveTimes(getTimes().filter(x=>now-x<3600000).concat(now));
+    form.reset(); startedAt=0; newCaptcha(); setStatus('ok','ok');
+  }catch(err){
+    setStatus('bad','err.rate',{s:30});
+  }finally{ submitBtn.disabled = false; }
+});
+
+/* package buttons preselect the form */
+$$('[data-pkg]').forEach(b=>b.addEventListener('click',()=>{
+  $('#package').value = b.dataset.pkg; setErr('package',null);
+  $('#contact').scrollIntoView({behavior:'smooth'});
+  setTimeout(()=>$('#name').focus({preventScroll:true}), 600);
+}));
+
+/* ---------------- Signature shots, ticker, travel calculator ---------------- */
+(function(){
+  const PATHS = ['M40 62 a60 30 0 1 0 120 0 a60 30 0 1 0 -120 0','M15 100 C55 92 85 58 128 26','M100 70 L186 16','M25 28 H175 V50 H25 V72 H175 V94 H25','M10 40 H176','M8 62 C40 18 62 106 95 62 S152 18 192 62'];
+  $$('.shot-viz').forEach(box=>{
+    const i = +box.dataset.shot-1, path = PATHS[i];
+    const subject = i===4 ? '<circle r="5" fill="#fff"><animateMotion dur="5s" repeatCount="indefinite" path="M10 98 H176"/></circle>'
+      : i===3 ? '<rect x="25" y="28" width="150" height="66" fill="none" stroke="#fff" stroke-opacity=".35" stroke-dasharray="4 4"/>'
+      : i===5 ? '<g stroke="#fff" stroke-width="2" fill="none"><path d="M60 50V100M60 50H78V70"/><path d="M130 50V100M130 50H148V70"/></g>'
+      : '<rect x="88" y="66" width="24" height="42" fill="#222" stroke="#fff" stroke-width="2"/><rect x="94" y="74" width="5" height="5" fill="#FF5A00"/><rect x="102" y="74" width="5" height="5" fill="#FF5A00"/>';
+    box.innerHTML = `<svg viewBox="0 0 200 120" aria-hidden="true"><path d="M0 108H200" stroke="#fff" stroke-opacity=".3"/>${subject}<path d="${path}" fill="none" stroke="#FF5A00" stroke-width="1.5" stroke-dasharray="3 4" opacity=".8"/><circle r="6" fill="#FF5A00" stroke="#fff" stroke-width="2"><animateMotion dur="${i===4?5:6}s" repeatCount="indefinite" path="${path}"/></circle></svg>`;
+  });
+  const tk = $('.ticker-track'); tk.innerHTML = tk.innerHTML.repeat(4);
+})();
+/* ---------------- Init ---------------- */
+paintIcons();
+newCaptcha();
+(function init(){
+  let l = null;
+  try{ l = localStorage.getItem('skylens_lang'); }catch(e){}
+  if(!l || !I18N[l]){
+    const n = (navigator.language||'en').toLowerCase();
+    l = n.startsWith('cs') ? 'cz' : n.startsWith('uk') ? 'ua' : (n.startsWith('en') ? 'en' : 'ua');
+  }
+  applyLang(l);
+  paintIcons();
+})();
+</script>
+</body>
+</html>
